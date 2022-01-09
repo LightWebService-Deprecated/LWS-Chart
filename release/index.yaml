@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  lws-gateway:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-01-09T21:16:10.979894+09:00"
+    description: LWS Gateway Helm Chart for Kubernetes
+    digest: 699bc679835d724fbec77db08ea2e5dfb361a33fbbb699d861ce9800dbe6977c
+    name: lws-gateway
+    type: application
+    urls:
+    - lws-gateway-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-01-09T21:16:10.979163+09:00"

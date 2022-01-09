@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lws-deployment
+  labels:
+    environment: development
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: lws-pods
+  template:
+    metadata:
+      labels:
+        app: lws-pods
+    spec:
+      containers:
+        - name: lws-gateway
+          image: kangdroid/lws-gateway:{{.Values.image.version}}
+          ports:
+          - containerPort: 80
+          volumeMounts:
+            - name: secrets
+              mountPath: /app/secrets
+              readOnly: true
+          imagePullPolicy: Always
+      volumes:
+        - name: secrets
+          secret:
+            secretName: lws-secrets
